@@ -1,0 +1,179 @@
+// Import 
+@import '../../assets/scss/main.scss';
+
+/*Introduction*/
+
+.masthead {
+    @include padding(100px 20px);
+    .masthead-contents {
+        text-align: $text-center;
+    }
+    h1 {
+        font-size: $extra-large-fontsize;
+        color: $black;
+        font-family: $MontserratBold;
+    }
+    p {
+        font-size: $semi-large-fontsize;
+        color: $grey2;
+        font-family: $OpenSansRegular;
+        @include padding(10px 0 0);
+    }
+}
+
+.project-grid {
+    overflow: hidden;
+    position: $position-relative;
+}
+
+.project-cover {
+    margin-bottom: 20px;
+    margin-top: 0px;
+    margin-right: 0px;
+    width: calc(100% - 0px);
+    display: block;
+    float: left;
+    position: relative;
+    &:nth-child(1n+1) {
+        clear: left;
+        margin-left: 0;
+    }
+    &:nth-child(1n) {
+        margin-right: 0;
+    }
+    &:nth-child(odd) {
+        .cover-image-wrap {
+            float: left;
+        }
+        .details-wrap {
+            right: 0;
+        }
+    }
+    &:nth-child(even) {
+        .cover-image-wrap {
+            float: right;
+        }
+        .details-wrap {
+            left: 0;
+        }
+    }
+    .cover-image-wrap {
+        width: 60.1%;
+        height: 450px;
+        overflow: hidden;
+        position: relative;
+        .cover-image {
+            border-radius: 2px;
+            width: 100%;
+            background-position: center center;
+            background-size: cover;
+            height: 100%;
+            position: relative;
+            &:after {
+                border-radius: 2px;
+            }
+            .cover {
+                border-radius: 2px;
+                left: 0;
+                min-height: 100%;
+                position: absolute;
+                top: 0;
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                display: block;
+                min-height: 100%;
+                overflow: hidden;
+                width: 100%;
+                background-color: #ccc;
+                .cover__img {
+                    font-family: 'object-fit: cover;';
+                    height: calc(100% + 2px);
+                    left: 50%;
+                    object-fit: cover;
+                    position: absolute;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+                    width: calc(100% + 2px);
+                }
+            }
+        }
+    }
+    .details-wrap {
+        padding-bottom: 0%;
+        padding-top: 0%;
+        width: 40%;
+        position: absolute;
+        height: 100%;
+        top: 0;
+        right: 0;
+        .details {
+            background: #f2f2f2;
+            height: 100%;
+            position: relative;
+            width: 100%;
+            transition: background 0.2s ease;
+            .details-inner {
+                -webkit-transform: translateY(-50%);
+                -moz-transform: translateY(-50%);
+                -ms-transform: translateY(-50%);
+                -o-transform: translateY(-50%);
+                transform: translateY(-50%);
+                top: 50%;
+                left: 0;
+                position: absolute;
+                width: 100%;
+                padding-bottom: 6%;
+                padding-left: 8%;
+                padding-right: 8%;
+                padding-top: 6%;
+                overflow: hidden;
+                .title,
+                .description {
+                    color: $dark-grey;
+                    font-family: $MontserratBold;
+                    font-size: $fontsize-24;
+                    text-align: center;
+                    text-transform: uppercase;
+                }
+                .description {
+                    font-size: $small-fontsize;
+                    font-family: $OpenSansRegular;
+                    color: $grey3;
+                    text-transform: none;
+                }
+            }
+        }
+    }
+}
+
+.link-transition a {
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.project-cover .title,
+.project-cover .date,
+.project-cover .custom1,
+.project-cover .custom2,
+.project-cover .description {
+    clear: both;
+}
+
+.project-cover .title,
+.project-cover .fields,
+.project-cover .custom,
+.project-cover .description,
+.project-cover .date {
+    transition: color 0.2s ease;
+}
+
+.project-cover:hover .details {
+    background: #191919 !important;
+}
+
+.project-cover:hover .title,
+.project-cover:hover .description {
+    color: #ffffff !important;
+    font-style: normal !important;
+    font-weight: 500 !important;
+}

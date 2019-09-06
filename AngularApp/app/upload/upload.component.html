@@ -1,0 +1,69 @@
+<main role="main">
+    <h2>Upload project details </h2>
+    <div class="upload-panel">
+        <div class="form-group">
+            <label for="projectTitle">Title:</label>
+            <input type="text" [(ngModel)]="uploadDetails.title" id="projectTitle" name="projectTitle" required />
+        </div>
+        <div class="form-group">
+            <label for="projectDescription">Description:</label>
+            <input type="text" [(ngModel)]="uploadDetails.description" id="projectDescription" name="projectDescription" required />
+        </div>
+        <div class="form-group">
+            <label for="photos">Upload Image</label>
+            <input id="photos" name="photos" type="file" (change)="fileChangeEvent($event)" placeholder="Upload a file..." />
+        </div>
+        <button type="submit" class="btn btn-success" (click)="upload()">
+            <i class="glyphicon glyphicon-open-file"></i>&nbsp;Upload
+        </button>
+    </div>
+
+    <div>
+
+        <ul class="uploaded-image">
+            <li *ngFor="let image of images">
+                <div class="imageTable imageTable-5cols">
+                    <div class="imageTable-cell">
+                        <img src="/uploads/{{ image.filename}}">
+                    </div>
+
+                    <div class="imageTable-cell">
+                        <p>{{image.title}}</p>
+                    </div>
+
+                    <div class="imageTable-cell">
+                        <p>{{image.description}}</p>
+                    </div>
+
+                    <div class="imageTable-cell">
+                        <a href="javascript:void(0)" (click)="goToProjectUpload(image._id)">Upload Image for project gallery</a>
+                    </div>
+
+                    <div class="imageTable-cell">
+                        <i (click)="setDelete(image)" data-toggle="modal" data-target="#deleteModal" title="Delete" class="fas fa-trash-alt" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Delete Post</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete full gallery ?
+                </div>
+                <div class="modal-footer">
+                    <button #closeBtn (click)="unsetDelete()" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button (click)="deleteGallery()" type="button" class="btn btn-primary">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
