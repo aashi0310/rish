@@ -1,46 +1,32 @@
 // Import 
 @import '../../assets/scss/main.scss';
 @import '../header/header.component.scss';
-.masthead {
-    @include padding(100px 20px);
-    text-align: $text-center;
-    .masthead-contents {
-        max-width: 1100px;
-        @include margin(0 auto);
-    }
-    h1 {
-        font-size: $extra-large-fontsize;
-    }
-    h3 {
-        font-size: $semi-large-fontsize;
-        @include padding(20px 0);
-        color: $grey;
-    }
-}
-
 .contact-me {
     margin-top: 50px;
     .mail-me {
-        display: block;
+        display: $display-block;
         padding: 10px;
         background-color: $seconday-color;
-        border-radius: 5px;
+        @include rounded-corners (5px);
         width: 100px;
-        margin: 0 auto;
+        @include margin (0 auto);
         font-weight: $weight-700;
-        outline: none;
+        outline: $none;
     }
     .nav-list {
-        text-align: center;
+        text-align: $text-center;
         @include padding (20px 0 20px 0);
-        li a i {
-            background-color: $seconday-color;
+        li a {
+            &:hover i,
+            i {
+                color: $primary-color;
+            }
         }
     }
 }
 
 .profile-pic {
     max-width: 100%;
-    margin: 50px auto;
-    display: block;
+    @include margin(50px auto);
+    display: $display-block;
 }
